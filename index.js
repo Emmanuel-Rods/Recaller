@@ -32,7 +32,7 @@ bot.on("voice", async (context) => {
 
   const transcript = await client.transcripts.transcribe(params);
 
-  console.log(transcript.text);
+  //console.log(transcript.text);
 
   const response = await ai.models.generateContent({
     model: "gemini-2.0-flash",
@@ -40,7 +40,7 @@ bot.on("voice", async (context) => {
   });
 
   context.reply(response.text);
-  console.log(response.text);
+  //console.log(response.text);
 });
 
 bot.launch();
