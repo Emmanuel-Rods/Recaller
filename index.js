@@ -2,7 +2,11 @@ import { Telegraf } from "telegraf";
 import { GoogleGenAI } from "@google/genai";
 import { AssemblyAI } from "assemblyai";
 import dotenv from "dotenv";
+import express from "express";
+const app = express();
 dotenv.config();
+
+const port = 3000;
 
 const ai = new GoogleGenAI({
   apiKey: process.env.GOOGLE_GEN_AI_API_KEY,
@@ -40,3 +44,11 @@ bot.on("voice", async (context) => {
 });
 
 bot.launch();
+
+app.get("/", (req, res) => {
+  res.send("Your Bot is Live!");
+});
+
+app.listen(port, () => {
+  console.log(`app listening on port ${port}`);
+});
